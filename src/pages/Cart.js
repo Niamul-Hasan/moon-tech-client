@@ -4,7 +4,7 @@ import { useProducts } from "../ContextApi/ProductProvider";
 
 const Cart = () => {
     const {
-        state: { products, loading, error },
+        state: { cart, loading, error },
     } = useProducts();
 
     let content;
@@ -17,12 +17,12 @@ const Cart = () => {
         content = <p>Something went wrong</p>;
     }
 
-    if (!loading && !error && products.length === 0) {
-        content = <p>Nothing to show, product list is empty</p>;
+    if (!loading && !error && cart.length === 0) {
+        content = <p>Nothing to show, Cart list is empty</p>;
     }
 
-    if (!loading && !error && products.length) {
-        content = products.map((product) => (
+    if (!loading && !error && cart.length) {
+        content = cart.map((product) => (
             <ProductCart key={product._id} product={product} />
         ));
     }
